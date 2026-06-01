@@ -1,0 +1,303 @@
+<!doctype html>
+<html class="fixed sidebar-left-sm">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title> Admin Dashboard</title>
+
+		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS --> 
+		<link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap/css/bootstrap.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/animate/animate.compat.css') }}">
+		<link rel="stylesheet" href="{{ asset('backend/vendor/font-awesome/css/all.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/boxicons/css/boxicons.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/magnific-popup/magnific-popup.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/jquery-ui/jquery-ui.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/jquery-ui/jquery-ui.theme.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css') }}" />
+		<link rel="stylesheet" href="{{ asset('backend/vendor/morris/morris.css') }}" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{{ asset('backend/css/theme.css') }}" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="{{ asset('backend/css/skins/default.css') }}" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
+
+		<!-- Head Libs -->
+		<script src="{{ asset('backend/vendor/modernizr/modernizr.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+	</head>
+	<body>
+		<section class="body">
+
+			<!-- start: header -->
+		@include('admin.body.header')	
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+		@include('admin.body.sidebar')	
+				<!-- end: sidebar -->
+    <section role="main" class="content-body">            
+        @yield('admin')
+    </section>
+			</div> 
+
+		</section>
+
+		<!-- Vendor -->
+		<script src="{{ asset('backend/vendor/jquery/jquery.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jquery-browser-mobile/jquery.browser.mobile.js') }}"></script>
+		<script src="{{ asset('backend/vendor/popper/umd/popper.min.js') }}"></script>
+		<script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('backend/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{ asset('backend/vendor/common/common.js') }}"></script>
+		<script src="{{ asset('backend/vendor/nanoscroller/nanoscroller.js') }}"></script>
+		<script src="{{ asset('backend/vendor/magnific-popup/jquery.magnific-popup.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+
+		<!-- Specific Page Vendor -->
+		<script src="{{ asset('backend/vendor/jquery-ui/jquery-ui.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqueryui-touch-punch/jquery.ui.touch-punch.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jquery-appear/jquery.appear.js') }}"></script>
+		<script src="{{ asset('backend/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jquery.easy-pie-chart/jquery.easypiechart.js') }}"></script>
+		<script src="{{ asset('backend/vendor/flot/jquery.flot.js') }}"></script>
+		<script src="{{ asset('backend/vendor/flot.tooltip/jquery.flot.tooltip.js') }}"></script>
+		<script src="{{ asset('backend/vendor/flot/jquery.flot.pie.js') }}"></script>
+		<script src="{{ asset('backend/vendor/flot/jquery.flot.categories.js') }}"></script>
+		<script src="{{ asset('backend/vendor/flot/jquery.flot.resize.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jquery-sparkline/jquery.sparkline.js') }}"></script>
+		<script src="{{ asset('backend/vendor/raphael/raphael.js') }}"></script>
+		<script src="{{ asset('backend/vendor/morris/morris.js') }}"></script>
+		<script src="{{ asset('backend/vendor/gauge/gauge.js') }}"></script>
+		<script src="{{ asset('backend/vendor/snap.svg/snap.svg.js') }}"></script>
+		<script src="{{ asset('backend/vendor/liquid-meter/liquid.meter.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/jquery.vmap.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/data/jquery.vmap.sampledata.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/jquery.vmap.world.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.africa.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.asia.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.australia.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.europe.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js') }}"></script>
+		<script src="{{ asset('backend/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js') }}"></script>
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="{{ asset('backend/js/theme.js') }}"></script>
+
+		<!-- Theme Custom -->
+		<script src="{{ asset('backend/js/custom.js') }}"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="{{ asset('backend/js/theme.init.js') }}"></script>
+
+		<!-- Examples -->
+		<script src="{{ asset('backend/js/examples/examples.dashboard.js') }}"></script>
+
+
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+<script src="{{ asset('backend/js/code.js') }}"></script>
+
+<script src="{{ asset('backend/js/tinymce/tinymce.min.js') }}"></script>
+   <script>
+    tinymce.init({
+        selector: '#detailsEditor',
+        plugins: 'lists link image preview code',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | preview code',
+        menubar: false,
+        height: 300
+    });
+    </script>
+
+
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type','info') }}"
+switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break; 
+}
+@endif 
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    })
+
+	
+	/// Generate Slug
+	function generateSlug(){
+		const title = document.getElementById('titleInput').value;
+		const slug = title.toLowerCase()
+						.replace(/[^a-z0-9]+/g, '-')
+                        .replace(/(^-|-$)+/g, '');
+			document.getElementById('slugInput').value = slug;
+	} 
+	//End Method
+
+
+/// Logical Hide & Show
+	const investmentType = document.getElementById('investment_type');
+	const installmentFields = document.getElementById('installmentFields');
+
+	installmentFields.style.display = 'none';
+	investmentType.addEventListener('change',function(){
+		if (this.value === 'Investment-By-Installment') {
+			installmentFields.style.display = 'block';
+		}else {
+			installmentFields.style.display = 'none';
+		}
+	});
+
+
+	//// Change % Or USD
+	document.getElementById('profit_amount_type').addEventListener('change', function(){
+		const value = this.value;
+		document.querySelector('input[name="minimum_profit_amount"] + .input-group-text').textContent = value;
+
+		document.querySelector('input[name="profit_amount"] + .input-group-text').textContent = value;
+
+		document.querySelector('input[name="auto_profit_distribution"] + .input-group-text').textContent = value;
+
+	});
+	// End Change % Or USD
+
+/// Auto Profit Distribution Hide and Show
+
+	const profitDistributionSelete = document.getElementById('profit_distribution');
+	const profitWrapper = document.getElementById('profit_distribution_wrapper');
+	const autoWrapper = document.getElementById('auto_profit_wrapper');
+
+	function toggleProfitFields(value){
+		if (value === 'Manual') {
+			autoWrapper.style.display = 'none';
+			profitWrapper.classList.remove('col-md-6');
+			profitWrapper.classList.add('col-md-12')
+		} else if(value === 'Auto'){
+			autoWrapper.style.display = 'block';
+			profitWrapper.classList.remove('col-md-12');
+			profitWrapper.classList.add('col-md-6')
+		} else {
+			autoWrapper.style.display = 'block';
+			profitWrapper.classList.remove('col-md-12');
+			profitWrapper.classList.add('col-md-6')
+		}
+	}
+
+	toggleProfitFields(profitDistributionSelete.value);
+	profitDistributionSelete.addEventListener('change',function(){
+		toggleProfitFields(this.value);
+	});
+	// End Method
+
+
+
+
+	/// Main Installment Amount Calculation 
+	const perShareInput = document.querySelector('input[name="per_share_amount"]');
+	const downPaymentInput = document.querySelector('input[name="down_payment"]');
+	const totalInstallmentInput = document.querySelector('input[name="total_installment"]');
+	const perInstallmentInput = document.querySelector('input[name="per_installment_amount"]');
+
+	function calculateInstallment(){
+		const perShare = parseFloat(perShareInput.value) || 0;
+		const downPaymentPercent = parseFloat(downPaymentInput.value) || 0;
+		const totalInstallments = parseInt(totalInstallmentInput.value) || 0;
+
+		if (perShare > 0 && totalInstallments > 0) {
+			const downPaymentAmount = (perShare * downPaymentPercent) / 100;
+			const remainingAmount = perShare - downPaymentAmount;
+			const perInstallment = remainingAmount / totalInstallments;
+
+			perInstallmentInput.value = perInstallment.toFixed(2);
+		}else {
+			perInstallmentInput.value = '';
+		}
+	}
+
+	// Bind the event Listeners 
+	perShareInput.addEventListener('input', calculateInstallment);
+	downPaymentInput.addEventListener('input',calculateInstallment);
+	totalInstallmentInput.addEventListener('input',calculateInstallment);
+
+    /// Profit Schedule hide and show
+	const scheduleSelete = document.getElementById('profit_schedule');
+	const profitScheduleWrapper = document.getElementById('profitScheduleWrapper');
+	const profitSchedulePeriodWrapper = document.getElementById('profitSchedulePeriodWrapper');
+	const repeatTimeWrapper = document.getElementById('repeatTimeWrapper');
+
+	function toggleSchedulFields(value){
+		profitScheduleWrapper.classList.remove('col-md-6','col-md-12');
+
+		if (value === 'One-Time') {
+			profitSchedulePeriodWrapper.style.display = 'none';
+			repeatTimeWrapper.style.display = 'none';
+			profitScheduleWrapper.classList.add('col-md-12');
+		} else if(value === 'Life-Time'){
+			profitSchedulePeriodWrapper.style.display = 'block';
+			repeatTimeWrapper.style.display = 'none';
+			profitScheduleWrapper.classList.add('col-md-6');
+		} else if(value === 'Repeated-Time'){
+			profitSchedulePeriodWrapper.style.display = 'block';
+			repeatTimeWrapper.style.display = 'block';
+			profitScheduleWrapper.classList.add('col-md-6');
+		} else {
+			profitSchedulePeriodWrapper.style.display = 'none';
+			repeatTimeWrapper.style.display = 'none';
+			profitScheduleWrapper.classList.add('col-md-12');
+		}  
+	}
+	toggleSchedulFields(scheduleSelete.value);
+		scheduleSelete.addEventListener('change', function(){
+			toggleSchedulFields(this.value);
+		});
+	// End
+
+
+
+</script>
+
+
+
+	</body>
+</html>
