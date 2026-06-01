@@ -116,8 +116,15 @@ Route::controller(DipositController::class)->group(function(){
     Route::post('/admin/deposit/status/update/{id}', 'AdminDepositeStatusUpdate')->name('admin.deposit.status.update');
 
     Route::get('/approved/deposit', 'AapprovedDeposit')->name('approved.deposit');
-    
+
 });
+
+Route::controller(DipositController::class)->group(function(){
+    Route::get('/pending/downpayment', 'PendingDownpayment')->name('pending.downpayment');
+    
+   
+});
+
 
 
 });
