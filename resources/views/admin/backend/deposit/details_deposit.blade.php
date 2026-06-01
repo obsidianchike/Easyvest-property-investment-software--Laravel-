@@ -1,5 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin') 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 
 <header class="page-header">
     <h2>Details Deposit </h2> 
@@ -223,7 +225,9 @@ $startDate = \Carbon\Carbon::parse($investment->created_at);
             </li> 
         </ul>
 
-    <form action="">
+    <form action="{{ route('admin.deposit.status.update',$details->id) }}" method="POST">
+        @csrf 
+
         @if ( $details->status != 'approved')
         <button type="submit" name="action" value="approved" class="btn btn-success">Approve</button> 
         @endif
@@ -235,6 +239,23 @@ $startDate = \Carbon\Carbon::parse($investment->created_at);
 
 
 </div>
+
+
+
+
+
+<script>
+    document.getElementById('download').addEventListener('click', function(){
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text('Installment Table', 14, 15);
+        doc.autoTable({
+            html: "#installmentTable",
+            startY: 25,
+        });
+        doc.save('installment.pdf')
+    })
+</script>
 
 
 @endsection
