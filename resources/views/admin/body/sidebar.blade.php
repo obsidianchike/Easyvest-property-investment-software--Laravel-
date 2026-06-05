@@ -34,12 +34,12 @@
             </a>
         </li>
         <li>
-            <a class="nav-link" href="{{ route('all.times') }}">
+            <a class="nav-link" href="{{ route('complete.investment') }}">
                 Completed Investment 
             </a>
         </li>
         <li>
-            <a class="nav-link" href="{{ route('all.location') }}">
+            <a class="nav-link" href="{{ route('all.investment') }}">
                 All Investment 
             </a>
         </li>
