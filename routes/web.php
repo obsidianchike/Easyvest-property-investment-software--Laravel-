@@ -8,6 +8,7 @@ use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\InvestmentController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\DipositController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -122,9 +123,8 @@ Route::controller(DipositController::class)->group(function(){
 Route::controller(DipositController::class)->group(function(){
     Route::get('/pending/downpayment', 'PendingDownpayment')->name('pending.downpayment');
     
-   
-});
 
+});
 
 
 });

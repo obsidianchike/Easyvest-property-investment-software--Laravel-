@@ -11,8 +11,8 @@ class Installment extends Model
     public function investment(){
         return $this->belongsTo(Investment::class);
     }
-    
-        public function disposit(){
+
+        public function diposit(){
         return $this->hasOne(Diposit::class, 'installment_id');
     }
 

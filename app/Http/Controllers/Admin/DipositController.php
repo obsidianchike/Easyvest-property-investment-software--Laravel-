@@ -82,7 +82,7 @@ class DipositController extends Controller
      // End Method 
 
 
-      public function AapprovedDeposit(){
+        public function AapprovedDeposit(){
 
         $approvedDeposits = Diposit::with(['user','property','installment.investment.property'])->where('status','approved')->latest()->get();
 
@@ -91,17 +91,17 @@ class DipositController extends Controller
     }
     // End Method 
 
-public function PendingDownpayment(){
-        $installments = Installment::with(['investment.property','investment.user','disposit'])
-        ->where('down_payment', '>',0)
-        ->where('status','processing')
-        ->get();
+    public function PendingDownpayment(){
+
+        $installments = Installment::with(['investment.property','investment.user','diposit'])
+            ->where('down_payment', '>',0)
+            ->where('status','processing')
+            ->get();
 
         return view('admin.backend.downpayment.pending_downpayment',compact('installments'));
-        
 
     }
-     // End Method 
+    // End Method 
 
 
 

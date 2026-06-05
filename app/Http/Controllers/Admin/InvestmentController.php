@@ -95,7 +95,8 @@ class InvestmentController extends Controller
         if ($request->payment_type === 'installment') {
             Installment::create([
                 'investment_id' => $investment->id,
-                'amount' => $downPayment,
+                'amount' => 0,
+                'down_payment' => $downPayment,
                 'next_time' => now(),
                 'paid_time' => now(),
                 'status' => 'processing'
