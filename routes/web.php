@@ -7,8 +7,8 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\InvestmentController;
-use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\DipositController;
+use App\Http\Controllers\User\UserController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard'); 
 
 
-Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
+ Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
 
 
 Route::controller(UserController::class)->group(function(){
@@ -34,26 +34,26 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/transactions', 'Transactions')->name('transactions');
     Route::get('/profile/setting', 'ProfileSetting')->name('profile.setting');
     Route::get('/user/change/password', 'UserChangePassword')->name('user.change.password');
-    Route::post('/user/password/update', 'UserPasswordUpdate')->name('user.password.update');
+
 
     Route::post('/user/profile/update', 'UserProfileUpdate')->name('user.profile.update');
+    Route::post('/user/password/update', 'UserPasswordUpdate')->name('user.password.update');
 
 });
-
 
 
 Route::controller(InvestmentController::class)->group(function(){
     Route::get('/investment/page/{slug}', 'UserInvestProperty')->name('user.invest.page'); 
     Route::post('/investment/store', 'InvestmentStore')->name('investment.store');
 
-    Route::get('/my/investment', 'MyInvestment')->name('my.investment');
+    Route::get('/my/investment', 'MyInvestment')->name('my.investment'); 
     Route::get('/view/installment/{id}', 'ViewInstallment')->name('view.installment');
-    
+
     Route::get('/installment/pay/{id}', 'InstallmentPay')->name('installment.pay');
     Route::post('/installment/pay/store', 'PayInstallmentStore')->name('pay.installment.store');
 
 
-    });
+});
 
 
 
@@ -69,13 +69,13 @@ Route::controller(InvestmentController::class)->group(function(){
 
 Route::middleware(['auth', IsAdmin::class])->group(function(){
 
-Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
-Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
-Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
-Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
+ Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+ Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
+ Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+ Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
 
-Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
-Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
+ Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+ Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
 
 Route::controller(PropertyController::class)->group(function(){
@@ -110,11 +110,10 @@ Route::controller(PropertyController::class)->group(function(){
     Route::delete('/property/galleryimage-delete/{id}', 'GalleryImgDelete');
 });
 
-
 Route::controller(DipositController::class)->group(function(){
     Route::get('/pending/deposit', 'PendingDeposit')->name('pending.deposit');
     Route::get('/deposit/details/{id}', 'DepositDetails')->name('deposit.details'); 
-    Route::post('/admin/deposit/status/update/{id}', 'AdminDepositeStatusUpdate')->name('admin.deposit.status.update');
+    Route::post('/admin/deposit/status/update/{id}', 'AdminDepositeStatusUpdate')->name('admin.deposit.status.update'); 
 
     Route::get('/approved/deposit', 'AapprovedDeposit')->name('approved.deposit');
 
@@ -122,9 +121,11 @@ Route::controller(DipositController::class)->group(function(){
 
 Route::controller(DipositController::class)->group(function(){
     Route::get('/pending/downpayment', 'PendingDownpayment')->name('pending.downpayment');
-    
+    Route::put('/installment/status/update/{id}', 'UpdateInstallmentStatus')->name('installment.status.update');
+
 
 });
+
 
 
 });
@@ -134,11 +135,9 @@ Route::controller(DipositController::class)->group(function(){
 
 
 
-
 /// This Routes for access all 
+ Route::get('/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
 
-
-Route::get('/property/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
 
 
 

@@ -20,7 +20,7 @@
 <div class="col">
     <section class="card">
         <header class="card-header">
-        
+
 
             <h2 class="card-title"> Pending All Down Payment</h2>
         </header>
@@ -38,14 +38,14 @@
         </tr>
     </thead>
     <tbody>
-    @forelse ($installments as $installment) 
+      @forelse ($installments as $installment) 
         <tr>
         <td>{{  $installment->investment->property->title ?? 'N/A'  }}</td>
             <td>{{  $installment->investment->user->name ?? 'N/A'  }} <br>
             <small>{{ $installment->investment->user->email }}</small> </td>
 
             <td>${{ $installment->down_payment ?? 'N/A' }}  </td>
-            
+
             <td>  
                 @if ($installment->status == 'paid')
                     <span class="badge bg-success">Paid</span>
@@ -60,16 +60,21 @@
 
             <td>{{ $installment->created_at->diffForHumans() ?? 'N/A' }}</td>
             <td>
-        <a href="{{ route('deposit.details',$installment->id) }}" class="btn btn-outline-primary btn-sm">Details</a>  
-            
-            </td>  
+<form action="{{ route('installment.status.update',$installment->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-success btn-sm">Approve</button>
+            </form>
+       
+
+             </td>  
         </tr>
-    @empty
+      @empty
         <tr>
             <td colspan="6" class="text-center text-muted">No Pending Down payments found</td>
         </tr>
-    @endforelse 
-            
+      @endforelse 
+
     </tbody>
 </table>
             </div>

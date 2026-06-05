@@ -32,7 +32,7 @@ class DipositController extends Controller
         $investmentId = optional($details->installment)->investment_id;
 
         if (!$investmentId) {
-            return back()->with('error','NO investment linked with this deposit');
+           return back()->with('error','NO investment linked with this deposit');
         }
 
         $investment = Investment::with(['user','property','installments'])->findOrFail($investmentId);
@@ -82,7 +82,7 @@ class DipositController extends Controller
      // End Method 
 
 
-        public function AapprovedDeposit(){
+     public function AapprovedDeposit(){
 
         $approvedDeposits = Diposit::with(['user','property','installment.investment.property'])->where('status','approved')->latest()->get();
 
@@ -99,6 +99,33 @@ class DipositController extends Controller
             ->get();
 
         return view('admin.backend.downpayment.pending_downpayment',compact('installments'));
+
+    }
+    // End Method 
+
+    public function UpdateInstallmentStatus(Request $request, $id){
+
+        $installment = Installment::findOrFail($id);
+
+        if ($installment->status === 'processing') {
+           $installment->status = 'paid';
+           $installment->paid_time = now();
+           $installment->amount += $installment->down_payment;
+           $installment->save();
+
+        /// Update the related Diposit status if it exists
+        if ($installment->diposit ) {
+            $installment->diposit->status = 'approved';
+            $installment->diposit->save();
+        } 
+
+        }
+
+        $notification = array(
+            'message' => 'DownPayment Status updated Successfully',
+            'alert-type' => 'success'
+        ); 
+        return redirect()->route('pending.downpayment')->with($notification); 
 
     }
     // End Method 
