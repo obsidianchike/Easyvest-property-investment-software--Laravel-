@@ -20,5 +20,8 @@ class Investment extends Model
         return $this->hasMany(Installment::class);
     }
 
+    public function capitalReturn(){
+        return $this->hasOne(CapitalReturn::class);
+    }
 
 }
