@@ -42,7 +42,7 @@
 
     <div class="col-md-6" id="userFilterWrapper" style="display: none">
         <label for="userFilter" class="fw-bold">Select Investor/User:</label>
-        <select id="userFilter">
+        <select id="userFilter"  class="form-control">
             <option value=""> -- Select User --</option> 
         </select>
     </div>  
@@ -80,8 +80,36 @@
         </td>
         <td>${{ $installment->amount }}</td>
         <td>${{ $installment->investment->total_amount }}</td>
-        <td></td>
-        <td></td>
+        @php
+    static $investmentTotals = []; // investment wise total amount
+    static $investmentPaid = []; //Investment wise running paid amount
+
+    $investmentId = $installment->investment->id ?? null;
+    $total = $installment->investment->total_amount ?? 0;
+    
+    // first time installment
+    if (!isset($investmentTotals[$investmentId])) {
+    $investmentTotals[$investmentId] = $total;
+    $investmentPaid[$investmentId] = 0;
+    }
+
+    // increament only if current installment is paid
+    if ($installment->status == 'paid') {
+        $investmentPaid[$investmentId] += $installment->amount;
+    }
+    $paid = $investmentPaid[$investmentId];
+    $due = $investmentTotals[$investmentId] - $paid;  
+@endphp
+        
+        <td>${{ $paid  }}</td>
+        <td>${{ $due }}</td>
+        <td>
+            @if ($installment->status == 'paid')
+            <span class="badge bg-success">Paid</span>
+            @else 
+            <span class="badge bg-danger">Due</span>
+            @endif
+        </td>
     </tr>
         @endforeach
     @endforeach
@@ -95,7 +123,60 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const propertyFilter = document.getElementById("propertyFilter");
+    const userFilterWrapper = document.getElementById("userFilterWrapper");
+    const userFilter = document.getElementById("userFilter");
+    const rows = document.querySelectorAll(".installment-row");
 
+      // Default rows hide
+    rows.forEach(row => row.style.display = "none");
+
+    propertyFilter.addEventListener("change", function () {
+        let propertyId = this.value;
+
+         // Reset user filter
+        userFilter.innerHTML = '<option value="">-- Select User --</option>';
+        userFilterWrapper.style.display = "none";
+
+        rows.forEach(row => row.style.display = "none");
+
+        if (propertyId) {
+            rows.forEach(row => {
+                if (row.dataset.property === propertyId) {
+                row.style.display = "";
+                let userId = row.dataset.user;
+                let userName = row.querySelector("td").innerText.trim().split("\n")[0];
+                if (!userFilter.querySelector(`option[value='${userId}']`)) {
+                    let opt = document.createElement("option");
+                    opt.value = userId;
+                    opt.textContent = userName + " (ID: " + userId + ")";
+                    userFilter.appendChild(opt);
+                    }
+                }
+            });
+            userFilterWrapper.style.display = "block";
+        }
+    });
+
+    userFilter.addEventListener("change", function () {
+        let userId = this.value;
+        let propertyId = propertyFilter.value;
+
+        rows.forEach(row => {
+            if (
+            (!userId && row.dataset.property === propertyId) || 
+            (userId && row.dataset.user === userId && row.dataset.property === propertyId)
+            ) {
+            row.style.display = "";
+            } else {
+            row.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 
 
 @endsection
