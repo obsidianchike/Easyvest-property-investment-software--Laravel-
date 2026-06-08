@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard'); 
 
 
- Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
+Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
 
 
 Route::controller(UserController::class)->group(function(){
@@ -70,13 +70,13 @@ Route::controller(InvestmentController::class)->group(function(){
 
 Route::middleware(['auth', IsAdmin::class])->group(function(){
 
- Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
- Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
- Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
- Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
+Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
+Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
 
- Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
- Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
+Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
 
 Route::controller(PropertyController::class)->group(function(){
@@ -134,6 +134,8 @@ Route::controller(ManageInvestmentController::class)->group(function(){
 
     Route::get('/admin/property/details/{id}', 'AdminPropertyDetails')->name('admin_property_details');
     Route::get('/user/pay/history/{id}', 'UserPayHistory')->name('user.pay.history');
+    Route::get('/admin/capital/back/{id}', 'AdminCapitalBack')->name('admin.capital.back');
+    
     });
 
 
@@ -146,7 +148,7 @@ Route::controller(ManageInvestmentController::class)->group(function(){
 
 
 /// This Routes for access all 
- Route::get('/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
+Route::get('/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
 
 
 
