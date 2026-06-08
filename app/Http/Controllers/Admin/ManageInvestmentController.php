@@ -157,6 +157,16 @@ public function AdminPropertyDetails($id){
     }
      //End Method
 
+    public function AdminInstallmentReport(){
+
+        $installments = Installment::with(['investment.user','investment.property','investment.installments'])  
+                    ->get()
+                    ->groupBy(function($item){
+                        return optional($item->investment->user)->id;
+                    });
+        return view('admin.backend.installment.installment_report',compact('installments'));
+    }
+    //End Method
 
 
 }
