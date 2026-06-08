@@ -95,5 +95,19 @@ public function AllInvestment(){
     //End Method
 
 
+public function AdminPropertyDetails($id){
 
+        $investment = Investment::with(['user','property'])->findOrFail($id);
+        $allInvestments = Investment::with(['user','installments'])
+                    ->where('property_id',$investment->property_id )
+                    ->where('payment_status', '!=','failed')
+                    ->where('status','active')
+                    ->get();
+        return view('admin.backend.investment.details',compact('investment','allInvestments'));
+    }
+    //End Method
+
+
+
+    
 }

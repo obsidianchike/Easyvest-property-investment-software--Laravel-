@@ -132,7 +132,9 @@ Route::controller(ManageInvestmentController::class)->group(function(){
     Route::get('/complete/investment', 'CompleteInvestment')->name('complete.investment');
     Route::get('/all/investment', 'AllInvestment')->name('all.investment');
 
-});
+    Route::get('/admin/property/details/{id}', 'AdminPropertyDetails')->name('admin_property_details');
+
+    });
 
 
 
