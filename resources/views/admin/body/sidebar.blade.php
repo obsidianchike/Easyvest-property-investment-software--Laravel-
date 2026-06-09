@@ -165,6 +165,28 @@
 
 
 
+
+<li class="nav-parent">
+    <a class="nav-link" href="#">
+        <i class="bx bx-file" aria-hidden="true"></i>
+        <span>Capital Withdraw</span>
+    </a>
+    <ul class="nav nav-children">
+        <li>
+            <a class="nav-link" href="{{ route('pending.capital') }}">
+                Pending Capital Withdraw
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{ route('approved.capital') }}">
+            Approved Capital Withdraw
+            </a>
+        </li>
+        
+    </ul>
+</li>
+
+
             </ul>
         </nav>
 

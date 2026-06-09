@@ -289,5 +289,40 @@ public function DepositWithdraw(Request $request){
     }
      // End Method
 
+public function PendingCapital(){
+
+        $pendingCapital = CapitalReturn::with(['user','property'])->where('status','pending')->get();
+        return view('admin.backend.capital.pending_capital',compact('pendingCapital')); 
+    }
+      // End Method
+
+        public function ApprovedCapital(){
+
+        $approvedCapital = CapitalReturn::with(['user','property'])->where('status','paid')->get();
+        return view('admin.backend.capital.approved_capital',compact('approvedCapital')); 
+    }
+      // End Method
+
+    public function ApprovedCapitalStatusUpdate(Request $request, $id){
+
+        $capital = CapitalReturn::findOrFail($id);
+        if ($request->action == 'approved') {
+            $capital->status = 'paid';
+        } elseif ($request->action == 'rejected') {
+            $capital->status = 'pending';
+        }
+
+        $capital->save();
+
+        $notification = array(
+            'message' => 'CapitalReturn request Approved Successfully',
+            'alert-type' => 'success'
+        ); 
+        return redirect()->route('approved.capital')->with($notification); 
+
+    }
+      // End Method
+
+
 
 }

@@ -160,9 +160,16 @@ Route::controller(ProfitController::class)->group(function(){
     Route::get('/approved/withdraw', 'ApprovedWithdraw')->name('approved.withdraw');
     Route::get('/admin/withdraw/details/{id}', 'AdminWithdrawDetails')->name('admin.withdraw.details');
     Route::post('/admin/withdraw/status/update/{id}', 'AdminWithdrawStatusUpdate')->name('admin.withdraw.status.update');
-    
+
 });
 
+Route::controller(ProfitController::class)->group(function(){
+    Route::get('/pending/capital', 'PendingCapital')->name('pending.capital');
+    Route::get('/approved/capital', 'ApprovedCapital')->name('approved.capital');
+    Route::post('/approved/capital/update/{id}', 'ApprovedCapitalStatusUpdate')->name('admin.approved.status.update');
+
+
+});
 
 
 
