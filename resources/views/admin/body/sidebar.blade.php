@@ -142,6 +142,29 @@
     </ul>
 </li>
 
+
+<li class="nav-parent">
+    <a class="nav-link" href="#">
+        <i class="bx bx-file" aria-hidden="true"></i>
+        <span>Profit Withdraw</span>
+    </a>
+    <ul class="nav nav-children">
+        <li>
+            <a class="nav-link" href="{{ route('pending.withdraw') }}">
+                Pending Withdraw
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{ route('approved.withdraw') }}">
+            Approved Withdraw
+            </a>
+        </li>
+        
+    </ul>
+</li>
+
+
+
             </ul>
         </nav>
 
