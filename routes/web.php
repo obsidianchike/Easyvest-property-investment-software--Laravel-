@@ -20,12 +20,12 @@ Route::get('/', function () {
 
 Route::middleware(['auth', IsUser::class])->group(function(){
 
-Route::get('/dashboard', function () {
+    Route::get('/dashboard', function () {
     return view('home.dashboard.user_dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard'); 
 
 
-Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
+    Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');  
 
 
 Route::controller(UserController::class)->group(function(){
@@ -55,9 +55,10 @@ Route::controller(InvestmentController::class)->group(function(){
 
 });
 
-Route::controller(ProfitController::class)->group(function(){
-Route::get('/profit/history', 'ProfitHistory')->name('profit.history');
-Route::get('/withdraw/money', 'WithdrawMoney')->name('withdraw.money');
+    Route::controller(ProfitController::class)->group(function(){
+    Route::get('/profit/history', 'ProfitHistory')->name('profit.history');
+    Route::get('/withdraw/money', 'WithdrawMoney')->name('withdraw.money');
+    Route::post('/deposit/withdraw', 'DepositWithdraw')->name('deposit.withdraw');
 
 });
 
@@ -76,13 +77,13 @@ Route::get('/withdraw/money', 'WithdrawMoney')->name('withdraw.money');
 
 Route::middleware(['auth', IsAdmin::class])->group(function(){
 
-Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
-Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
-Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
-Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
+    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');  
+    Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
 
-Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
-Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
+    Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+    Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
 
 Route::controller(PropertyController::class)->group(function(){
@@ -165,7 +166,7 @@ Route::controller(ProfitController::class)->group(function(){
 
 
 /// This Routes for access all 
-Route::get('/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
+    Route::get('/details/{slug}', [PropertyController::class, 'PropertyDetails'])->name('property.details');
 
 
 
