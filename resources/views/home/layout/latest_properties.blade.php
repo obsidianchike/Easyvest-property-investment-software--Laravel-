@@ -8,7 +8,7 @@
             <p class="section-heading__subtitle">Latest properties</p>
             <div class="section-heading__wrapper">
                 <h2 class="section-heading__title">Explore Latest Properties</h2>
-                <a class="section-heading__link" href="//properties">
+                <a class="section-heading__link" href="{{ route('all.property.page') }}">
                     <span>Explore</span>
                     <i class="las la-long-arrow-alt-right"></i>
                 </a>

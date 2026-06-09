@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Withdraw extends Model
 {
+    // Explicitly define the table name just to leave zero room for Laravel errors
+    protected $table = 'withdraws';
+    
     protected $guarded = [];
 
     public function user(){
